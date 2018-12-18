@@ -1,23 +1,23 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View, Picker} from 'react-native';
 import { connect } from 'react-redux';
+import { Header } from 'react-native-elements'
 
 const styles = StyleSheet.create({
   container:{
-    height: '8%',
-    width: '100%',
-
+   backgroundColor: 'white'
   }
 })
 
 function TopBanner(props){
 
   return (
-    <View style = {styles.container}>
-      <Text>
-        {/* {props.tripPurpose} */}
-      </Text>
-    </View>
+    <Header
+    backgroundColor= 'white'
+    leftComponent={{ icon: 'menu', color: 'black' }}
+    centerComponent={{ text: 'MY TITLE', style: { color: 'black' } }}
+    // rightComponent={{ icon: 'home', color: '#fff' }}
+  />
   )
 }
 

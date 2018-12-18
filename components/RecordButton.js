@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View} from 'react-native';
 import { Button } from 'react-native-elements';
+import { accent } from '../styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   recordBtn:{
     borderColor: 'white',
     borderWidth:5,
-    backgroundColor:'red',
+    backgroundColor: accent,
     width:70,
     height:70
   }
@@ -29,7 +30,7 @@ export default function RecordButton(){
         <Button
           buttonStyle= {styles.recordBtn}
           onPress={handleRecord}
-          raised
+
           borderRadius={500}
           />
       </View>
