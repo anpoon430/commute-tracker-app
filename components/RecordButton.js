@@ -2,12 +2,13 @@ import React from 'react'
 import { StyleSheet, Text, View} from 'react-native';
 import { Button } from 'react-native-elements';
 import { accent } from '../styles';
+import { setStartTime } from '../redux/CurrentTrip';
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'transparent'
   },
   recordBtn:{
     borderColor: 'white',
@@ -18,10 +19,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function RecordButton(){
-  function handleRecord(){
+export default function RecordButton(props){
 
-  }
   return(
     <View
         style = {styles.container}
@@ -29,10 +28,16 @@ export default function RecordButton(){
         >
         <Button
           buttonStyle= {styles.recordBtn}
-          onPress={handleRecord}
-
+          onPress={props.handleRecord}
+          raised
           borderRadius={500}
           />
       </View>
   )
 }
+
+const mapState = ({currentTrip}) => ({
+  handleRecord(){
+
+  }
+})
