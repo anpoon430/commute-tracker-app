@@ -1,15 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 
-import CurrentTrip from './CurrentTrip';
-import Trips from './Trips';
-import Stats from './Stats';
-import User from './User';
+import currentTrip from './CurrentTrip';
+import trips from './Trips';
+import stats from './Stats';
+import user from './User';
 
 const reducer = combineReducers({
-  CurrentTrip,
-  Trips,
-  Stats,
-  User
+  currentTrip,
+  trips,
+  stats,
+  user
 })
 
 export default createStore(reducer)
