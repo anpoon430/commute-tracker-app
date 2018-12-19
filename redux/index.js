@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 
-import currentTrip from './CurrentTrip';
-import trips from './Trips';
-import stats from './Stats';
-import user from './User';
+import currentTrip from './currentTrip';
+import trips from './trips';
+import stats from './stats';
+import user from './user';
 
 const reducer = combineReducers({
   currentTrip,
