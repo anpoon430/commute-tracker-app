@@ -14,7 +14,7 @@ function TopBanner(props){
   return (
     <Header
     backgroundColor= 'white'
-    leftComponent={{ icon: 'menu', color: 'black' }}
+
     centerComponent={{ text: 'MY TITLE', style: { color: 'black' } }}
     // rightComponent={{ icon: 'home', color: '#fff' }}
   />

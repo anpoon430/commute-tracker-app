@@ -3,18 +3,30 @@ import RecordButton from './RecordButton';
 import { StyleSheet, View, Picker} from 'react-native';
 import Modal from "react-native-modal";
 import {Text, Icon} from 'react-native-elements'
+import { accent } from '../styles';
 
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     // height: 'auto',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     position: 'absolute',
-    bottom:0
+    bottom:0,
+    borderRadius: 10,
+    padding: 20
   },
   modal:{
     backgroundColor: 'white',
+  },
+  selection:{
+    flexDirection: 'column',
+    fontSize: 30,
+
+  },
+  headerContainer:{
+    flexDirection:'row',
+    justifyContent:'center'
   }
 });
 
@@ -29,18 +41,24 @@ export default function BottomSheet(){
     setPurposeModal(!purposeModal);
     setTripPurpose(purpose);
   }
-  const useMode = (mode) => {
+  const useMode = (modeSelected) => {
     setModeModal(!modeModal);
-    setMode(mode);
+    setMode(modeSelected);
   }
   const purposeIcons = {
     'Commute': <Icon
+                  reverse
+                  raised
+                  color = {accent}
                   key = 'briefcase'
                   type = 'feather'
                   name = 'briefcase'
                   onPress = {()=> usePurpose('Commute')}
                   />,
     'Shopping': <Icon
+                  reverse
+                  raised
+                  color = {accent}
                   key = 'shopping-cart'
                   type = 'feather'
                   name = 'shopping-cart'
@@ -49,12 +67,18 @@ export default function BottomSheet(){
   }
   const modeIcons = {
     'Car': <Icon
+              reverse
+              raised
+              color = {accent}
               key = 'car'
               type = 'material-community'
               name = 'car'
               onPress = {()=> useMode('Car')}
               />,
   'Subway': <Icon
+              reverse
+              raised
+              color = {accent}
               key = 'subway'
               type = 'material-community'
               name = 'subway'
@@ -63,19 +87,22 @@ export default function BottomSheet(){
   };
   return (
     <View
+    pointerEvents='box-none'
       style = {styles.container}
       >
-      <View>
-        {purposeIcons[tripPurpose]}
-        <Text>
-          Purpose
-        </Text>
-      </View>
-      <View>
-        {modeIcons[mode]}
-        <Text>
-          Purpose
-        </Text>
+      <View style = {styles.headerContainer}>
+        <View style = {styles.selection}>
+          {purposeIcons[tripPurpose]}
+          <Text>
+            Purpose
+          </Text>
+        </View>
+        <View style = {styles.selection}>
+          {modeIcons[mode]}
+          <Text>
+            Purpose
+          </Text>
+        </View>
       </View>
 
 
