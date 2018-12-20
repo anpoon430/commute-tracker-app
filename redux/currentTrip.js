@@ -5,11 +5,14 @@ const initialState = {
   path: [],
   startTime: null,
   endTime: null,
+  timer: 0,
+  timerId: null
 };
 
 const SET_TRIP_PURPOSE = 'SET_TRIP_PURPOSE';
 const TOGGLE_RECORDING = 'TOGGLE_RECORDING';
 const SET_START_TIME = 'SET_START_TIME';
+const UPDATE_TIMER = 'UPDATE_TIMER';
 
 //actions
 export const setTripPurpose = (tripPurpose) => ({
@@ -26,6 +29,11 @@ export const setStartTime = time => ({
   time
 });
 
+export const updateTimer = () => ({
+  type: UPDATE_TIMER,
+})
+
+
 
 //reducer
 export default function reducer(state = initialState, action){
@@ -38,7 +46,18 @@ export default function reducer(state = initialState, action){
     case TOGGLE_RECORDING:
       return {
         ...state,
-        recording: !state.recording
+        recording: !state.recording,
+      }
+    case SET_START_TIME:
+      return {
+        ...state,
+        recording: true,
+        startTime: action.time
+      }
+    case UPDATE_TIMER:
+      return {
+        ...state,
+        timer: state.timer + 1000,
       }
       default:
         return state
