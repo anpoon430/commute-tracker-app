@@ -13,7 +13,11 @@ export function msToTime(s) {
   var mins = s % 60;
   var hrs = (s - mins) / 60;
 
-  return pad(hrs) + ':' + pad(mins) + ':' + pad(secs);
+  return {
+    hh: pad(hrs),
+    mm: pad(mins),
+    ss: pad(secs)
+  };
 }
 
 
