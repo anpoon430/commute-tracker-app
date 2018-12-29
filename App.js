@@ -1,34 +1,42 @@
-import React, {Fragment} from 'react';
-import { StyleSheet, Text, View} from 'react-native';
-import { MapView} from 'expo';
-import BottomSheet from './components/BottomSheet';
-import TopBanner from './components/TopBanner';
-import {Provider} from 'react-redux';
-import store from './redux';
+import Map from './screens/Map'
+import Trips from './screens/Trips'
+import Stats from './screens/Stats'
+import {Feather} from '@expo/vector-icons'
+import React from 'react'
+import { Text } from 'react-native-elements'
+import { View } from 'react-native'
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { createAppContainer} from 'react-navigation'
+import { accent } from './styles';
 
-const styles = StyleSheet.create({
+const TabNav = createMaterialBottomTabNavigator({
+  Map: { screen: Map, },
+  // Trips: { screen: Trips},
+  // Stats: { screen: Stats}
+}, {
+  initialRouteName: 'Map',
+  activeColor: accent,
+  inactiveColor: 'grey',
+  barStyle: { backgroundColor: 'white' },
+  defaultNavigationOptions:({navigation}) => ({
+    tabBarIcon: ({focused, horizontal, tintColor}) => {
+      const {routeName} = navigation.state;
+      let iconName = {
+        'Map': 'map',
+        // 'Trips': ''
+      }
+      return <Feather
+                name = {iconName[routeName]}
+                color= {tintColor}
+                size = {horizontal ? 20: 25 }
+                />
+    }
+  }),
+  tabBarOptions: {
+    activeTintColor: accent,
+    inactiveTintColor: 'gray',
+  },
+},
+)
 
-});
-
-
-export default function App(){
-
-  return (
-    <Fragment>
-      <Provider store = {store}>
-          <TopBanner />
-          <MapView
-          style={{ flex: 1 }}
-          provider="google"
-          followsUserLocation
-          showsMyLocationButton
-          showsUserLocation
-          loadingEnabled
-        />
-          <BottomSheet />
-
-      </Provider>
-    </Fragment>
-  )
-}
-
+export default createAppContainer(TabNav)
