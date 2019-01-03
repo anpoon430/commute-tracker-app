@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Alert} from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { accent } from '../styles';
 import { toggleRecord } from '../redux/currentTrip';
 import { connect } from 'react-redux';
+
 
 
 const styles = StyleSheet.create({
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
 });
 
 class RecordButton extends Component{
+
 
   componentWillUnmount() {
     clearInterval(this.props.timerId);
@@ -62,6 +64,12 @@ const mapState = ({currentTrip}) => ({
 const mapDispatch = dispatch => ({
   toggleRecord(){
     dispatch(toggleRecord())
+  },
+  setStartLoc(){
+
+  },
+  setEndLoc(){
+
   }
 })
 

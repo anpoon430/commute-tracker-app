@@ -1,35 +1,32 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, Component} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { MapView} from 'expo';
 import BottomSheet from '../components/BottomSheet';
 import TopBanner from '../components/TopBanner';
-import {Provider} from 'react-redux';
-import store from '../redux';
+
+
 
 const styles = StyleSheet.create({
 
 });
 
 
-export default function Map(){
+export default function Map (){
+    return (
+      <Fragment>
+            <TopBanner />
+            <MapView
+            style={{ flex: 1 }}
+            provider="google"
+            followsUserLocation
+            showsMyLocationButton
+            showsUserLocation
+            loadingEnabled
+          />
+            <BottomSheet />
 
-  return (
-    <Fragment>
-      <Provider store = {store}>
-          <TopBanner />
-          <MapView
-          style={{ flex: 1 }}
-          provider="google"
-          followsUserLocation
-          showsMyLocationButton
-          showsUserLocation
-          loadingEnabled
-        />
-          <BottomSheet />
 
-      </Provider>
-    </Fragment>
-  )
-}
-
+      </Fragment>
+    )
+  }
 
