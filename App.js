@@ -1,8 +1,7 @@
 import Map from './screens/Map'
 import Trips from './screens/Trips'
 import Stats from './screens/Stats'
-import {Feather, Entypo} from '@expo/vector-icons';
-// import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {Feather, Entypo, Ionicons} from '@expo/vector-icons';
 import React from 'react'
 import { Text } from 'react-native-elements'
 import { View } from 'react-native'
@@ -17,7 +16,7 @@ import { Provider} from 'react-redux';
 const TabNav = createMaterialBottomTabNavigator({
   Map: { screen: Map, },
   Trips: { screen: Trips},
-  // Stats: { screen: Stats}
+  Stats: { screen: Stats}
 }, {
   initialRouteName: 'Map',
   activeColor: accent,
@@ -33,6 +32,10 @@ const TabNav = createMaterialBottomTabNavigator({
                   />,
         'Trips': <Entypo
                     name = 'flow-line'
+                    color = {tintColor}
+                  />,
+        'Stats': <Ionicons
+                    name = 'ios-stats'
                     color = {tintColor}
                   />
       }
