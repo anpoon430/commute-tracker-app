@@ -29,7 +29,9 @@ function Trips(props){
         })}
 
       </List>
-
+      <Button
+        title = 'A BUTTON'
+        />
 
     </View>
   )

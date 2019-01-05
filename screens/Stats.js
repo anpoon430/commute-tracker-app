@@ -7,10 +7,12 @@ export default function Stats(){
   return (
     <Header
       backgroundColor = 'white'
-      centerComponent= {<Text h1>
-        Stats
-      </Text>}
+      centerComponent= {
+        <Text h1>
+          Stats
+        </Text>}
     />
+
 
 
   )

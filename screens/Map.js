@@ -3,9 +3,14 @@ import { StyleSheet, Text, View, Alert } from "react-native";
 import { MapView, Location, Permissions } from "expo";
 import BottomSheet from "../components/BottomSheet";
 import TopBanner from "../components/TopBanner";
+import { connect } from 'react-redux';
 
 
-export default class Map extends Component {
+const styles = StyleSheet.create({
+
+});
+
+class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +43,7 @@ export default class Map extends Component {
             ...this.state,
             latitudeDelta: 0.0001,
             longitudeDelta: 0.01
-          }, 3000);
+          }, 1000);
         }
       );
     } catch (err) {
@@ -47,7 +52,7 @@ export default class Map extends Component {
   };
   render() {
     return (
-      <Fragment>
+      <Fragment >
         <TopBanner />
         <MapView
           ref={ref => {
@@ -59,7 +64,7 @@ export default class Map extends Component {
           showsMyLocationButton
           showsUserLocation
           loadingEnabled
-          region = {{latitude: 0, longitude:0, latitudeDelta: 90, longitudeDelta: 180}}
+          initialRegion = {{latitude: 0, longitude:0, latitudeDelta: 90, longitudeDelta: 180}}
           onMapReady={this._onMapReady}
         />
         <BottomSheet />
@@ -67,3 +72,9 @@ export default class Map extends Component {
     );
   }
 }
+
+const mapState = ({currentTrip}) => ({
+  startedRecording: currentTrip.startTime && true
+})
+
+export default connect(mapState)(Map);

@@ -1,53 +1,56 @@
 import React from 'react';
-import { Icon } from 'react-native'
+import { Icon } from 'react-native-elements'
 import { accent } from '../styles'
 
-export const purposeIcons = pressFunc => ({
+
+export const CloseIcon = <Icon
+                            raised
+                            type = 'Ionicons'
+                            name = 'ios-close'
+                          />
+
+export const purposeIcons = (pressFunc, listType) => ({
   Commute: (
     <Icon
-      reverse
-      raised
+
       color={accent}
       key="briefcase"
       type="feather"
       name="briefcase"
-      onPress={() => pressFunc("Commute")}
+      onPress={() => pressFunc("Commute", listType)}
     />
   ),
   Shopping: (
     <Icon
-      reverse
-      raised
+
       color={accent}
       key="shopping-cart"
       type="feather"
       name="shopping-cart"
-      onPress={() => pressFunc("Shopping")}
+      onPress={() => pressFunc("Shopping", listType)}
     />
   )
 });
 
-export const modeIcons = pressFunc => ({
+export const modeIcons = (pressFunc, listType) => ({
   Car: (
     <Icon
-      reverse
-      raised
+
       color={accent}
       key="car"
       type="material-community"
       name="car"
-      onPress={() => pressFunc("Car")}
+      onPress={() => pressFunc("Car", listType)}
     />
   ),
   Subway: (
     <Icon
-      reverse
-      raised
+
       color={accent}
       key="subway"
       type="material-community"
       name="subway"
-      onPress={() => pressFunc("Subway")}
+      onPress={() => pressFunc("Subway", listType)}
     />
   )
 });
