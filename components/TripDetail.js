@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import { StyleSheet, View} from 'react-native';
 import { Text, Button, Card, SearchBar, List, ListItem, Icon, Header } from 'react-native-elements'
 import {MapView} from 'expo';
-
+import {connect} from 'react-redux';
 
 const testCoords = [
   {latitude: 43.7771, longitude: -79.3441},
@@ -15,12 +15,15 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class TripDetail extends Component{
-
+class TripDetail extends Component{
+  constructor(props){
+    super(props);
+  }
 
   render(){
     return (
       <View>
+        {this.props.selected}
         <MapView
           ref = {ref => {this.map = ref}}
           style = {styles.map}
@@ -39,3 +42,9 @@ export default class TripDetail extends Component{
   }
 }
 
+const mapState = ({trips}) => ({
+  // selected: trips.list && trips.list.length && trips.list[trips.selected]
+  selected: trips.list
+})
+
+export default connect(mapState)(TripDetail)
